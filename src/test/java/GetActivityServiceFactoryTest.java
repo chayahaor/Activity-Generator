@@ -3,15 +3,15 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class GetActivityTest {
+class GetActivityServiceFactoryTest {
 
     @Test
     void getActivity() {
         //given
-        GetActivity getActivity = new GetActivity();
-
+        GetActivityServiceFactory factory = new GetActivityServiceFactory();
+        ActivityService service = factory.getInstance();
         //when
-        Activity activity = getActivity.getActivity("busywork", 1).blockingFirst();
+        Activity activity = service.getActivity("busywork").blockingGet();
 
         //then
         assertNotSame("", activity.getActivity());
