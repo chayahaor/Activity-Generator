@@ -14,7 +14,7 @@ class GetActivityServiceFactoryTest {
         Activity activity = service.getActivity("busywork").blockingGet();
 
         //then
-        assertNotSame("", activity.getActivity());
+        assertNotSame("", activity.getNextActivity());
         assertTrue(activity.getParticipants()>0);
         assertNotSame("", activity.getType());
 

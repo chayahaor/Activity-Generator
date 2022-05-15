@@ -36,7 +36,7 @@ public class ActivityPresenter {
             people = " person";
         }
 
-        String nextActivity = activity.getActivity() + " can be done with " + activity.getParticipants() + people;
+        String nextActivity = activity.getNextActivity() + " can be done with " + activity.getParticipants() + people;
         System.out.println(nextActivity);
         view.setActivity(nextActivity);
     }

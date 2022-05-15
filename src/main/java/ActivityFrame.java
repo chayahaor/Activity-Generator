@@ -1,7 +1,4 @@
-import io.reactivex.Single;
-
 import javax.swing.*;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
@@ -52,6 +49,7 @@ public class ActivityFrame extends JFrame {
     }
 
     public static void main(String[] args) {
+
         JFrame frame = new ActivityFrame();
         frame.setVisible(true);
     }

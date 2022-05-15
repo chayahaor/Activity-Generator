@@ -21,7 +21,7 @@ class ActivityPresenterTest {
         ActivityPresenter presenter = new ActivityPresenter(view, model);
         Activity activity = mock(Activity.class);
         doReturn(2).when(activity).getParticipants();
-        doReturn("Compliment someone").when(activity).getActivity();
+        doReturn("Compliment someone").when(activity).getNextActivity();
         doReturn(Single.just(activity))
                 .when(model).getActivity("social");
 

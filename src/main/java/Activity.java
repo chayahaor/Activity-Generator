@@ -1,5 +1,4 @@
 public class Activity {
-    //TODO: figure out the API call so that it does not return null
     String activity;
     String type;
     int participants;
@@ -8,7 +7,7 @@ public class Activity {
     String key;
     Double accessibility;
 
-    public String getActivity() {
+    public String getNextActivity() {
         return activity;
     }
 
