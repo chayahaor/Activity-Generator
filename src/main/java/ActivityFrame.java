@@ -1,3 +1,5 @@
+import io.reactivex.Single;
+
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
@@ -45,6 +47,7 @@ public class ActivityFrame extends JFrame {
 
     public void onSubmitClicked(ActionEvent event) {
         String category = categories[comboMenu.getSelectedIndex()];
+
         presenter.loadActivityFromInput(category, Integer.parseInt(numPeople.getValue().toString()));
     }
 

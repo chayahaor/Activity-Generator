@@ -15,7 +15,7 @@ class GetActivityServiceFactoryTest {
 
         //then
         assertNotSame("", activity.getActivity());
-        assertTrue(activity.getParticipants()>-1);
+        assertTrue(activity.getParticipants()>0);
         assertNotSame("", activity.getType());
 
 
