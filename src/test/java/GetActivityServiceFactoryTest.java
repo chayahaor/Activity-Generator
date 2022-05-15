@@ -11,7 +11,7 @@ class GetActivityServiceFactoryTest {
         GetActivityServiceFactory factory = new GetActivityServiceFactory();
         ActivityService service = factory.getInstance();
         //when
-        Activity activity = service.getActivity("busywork").blockingGet();
+        Activity activity = service.getActivity("social",2).blockingGet();
 
         //then
         assertNotSame("", activity.getNextActivity());

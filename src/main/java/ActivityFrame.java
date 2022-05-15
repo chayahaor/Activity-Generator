@@ -23,7 +23,7 @@ public class ActivityFrame extends JFrame {
         comboMenu = new JComboBox<>(categories);
         add(comboMenu);
 
-        SpinnerModel spinnerModel = new SpinnerNumberModel(1, 0, 10, 1);
+        SpinnerModel spinnerModel = new SpinnerNumberModel(1, 1, 5, 1);
         numPeople = new JSpinner(spinnerModel);
         add(numPeople);
 
@@ -44,18 +44,15 @@ public class ActivityFrame extends JFrame {
 
     public void onSubmitClicked(ActionEvent event) {
         String category = categories[comboMenu.getSelectedIndex()];
-
         presenter.loadActivityFromInput(category, Integer.parseInt(numPeople.getValue().toString()));
     }
 
     public static void main(String[] args) {
-
         JFrame frame = new ActivityFrame();
         frame.setVisible(true);
     }
 
     public void setActivity(String nextActivity) {
-        System.out.println(nextActivity);
         output.setText(nextActivity);
     }
 

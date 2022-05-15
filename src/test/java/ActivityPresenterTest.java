@@ -23,12 +23,12 @@ class ActivityPresenterTest {
         doReturn(2).when(activity).getParticipants();
         doReturn("Compliment someone").when(activity).getNextActivity();
         doReturn(Single.just(activity))
-                .when(model).getActivity("social");
+                .when(model).getActivity("social",2);
 
         //when
         presenter.loadActivityFromInput("social", 2);
 
         //then
-        verify(view).setActivity("Returning activity");
+        verify(view).setActivity("Compliment someone can be done with 2 people");
     }
 }

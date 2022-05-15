@@ -13,19 +13,10 @@ public class ActivityPresenter {
 
 
     public void loadActivityFromInput(String type, int numPeople) {
-        if (numPeople == 0) //Make default API calls without setting the number of people
-        {
-            Disposable disposable = model.getActivity(type)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(Schedulers.newThread())
-                    .subscribe(this::onNext, this::onError);
-        } else
-        {
-            Disposable disposable = model.getActivity(type)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(Schedulers.newThread())
-                    .subscribe(this::onNext, this::onError);
-        }
+        Disposable disposable = model.getActivity(type,numPeople)
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.newThread())
+                .subscribe(this::onNext, this::onError);
     }
 
 
@@ -38,6 +29,9 @@ public class ActivityPresenter {
 
         String nextActivity = activity.getNextActivity() + " can be done with " + activity.getParticipants() + people;
         System.out.println(nextActivity);
+        if(activity.getNextActivity()==null){
+            nextActivity="Seems there are no activities with that combination. Try changing your filters";
+        }
         view.setActivity(nextActivity);
     }
 
