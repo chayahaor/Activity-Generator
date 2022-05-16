@@ -44,7 +44,8 @@ public class ActivityFrame extends JFrame {
 
     public void onSubmitClicked(ActionEvent event) {
         String category = categories[comboMenu.getSelectedIndex()];
-        presenter.loadActivityFromInput(category, Integer.parseInt(numPeople.getValue().toString()));
+        presenter.loadActivityFromInput(
+                category, Integer.parseInt(numPeople.getValue().toString()));
     }
 
     public static void main(String[] args) {

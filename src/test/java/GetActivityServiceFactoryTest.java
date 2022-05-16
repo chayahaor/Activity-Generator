@@ -11,11 +11,11 @@ class GetActivityServiceFactoryTest {
         GetActivityServiceFactory factory = new GetActivityServiceFactory();
         ActivityService service = factory.getInstance();
         //when
-        Activity activity = service.getActivity("social",2).blockingGet();
+        Activity activity = service.getActivity("social", 2).blockingGet();
 
         //then
         assertNotSame("", activity.getNextActivity());
-        assertTrue(activity.getParticipants()>0);
+        assertTrue(activity.getParticipants() > 0);
         assertNotSame("", activity.getType());
 
 

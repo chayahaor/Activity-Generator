@@ -13,7 +13,7 @@ public class ActivityPresenter {
 
 
     public void loadActivityFromInput(String type, int numPeople) {
-        Disposable disposable = model.getActivity(type,numPeople)
+        Disposable disposable = model.getActivity(type, numPeople)
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.newThread())
                 .subscribe(this::onNext, this::onError);
@@ -27,10 +27,13 @@ public class ActivityPresenter {
             people = " person";
         }
 
-        String nextActivity = activity.getNextActivity() + " can be done with " + activity.getParticipants() + people;
+        String nextActivity = activity.getNextActivity() + " can be done with "
+                + activity.getParticipants() + people;
         System.out.println(nextActivity);
-        if(activity.getNextActivity()==null){
-            nextActivity="Seems there are no activities with that combination. Try changing your filters";
+        if (activity.getNextActivity() == null)
+        {
+            nextActivity = "Seems there are no activities with that combination. "
+                    + "Try changing your filters";
         }
         view.setActivity(nextActivity);
     }
