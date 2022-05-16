@@ -36,6 +36,8 @@ public class ActivityPresenter {
                     + "Try changing your filters";
         }
         view.setActivity(nextActivity);
+        view.setLink(activity.getLink());
+
     }
 
     public void onError(Throwable throwable) {
