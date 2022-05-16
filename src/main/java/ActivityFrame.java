@@ -15,6 +15,7 @@ public class ActivityFrame extends JFrame {
     private final String[] categories = {"education", "recreational", "social",
             "diy", "charity", "cooking", "relaxation", "music", "busywork"};
     private String url;
+    private Random gen;
 
     ActivityPresenter presenter;
 
@@ -77,7 +78,7 @@ public class ActivityFrame extends JFrame {
 
 
     public void changeColor() {
-        Random gen = new Random();
+        gen = new Random();
         Color color = new Color(gen.nextInt(256), gen.nextInt(256), gen.nextInt(256), 50);
         frame.getContentPane().setBackground(color);
         frame.repaint();
@@ -106,7 +107,14 @@ public class ActivityFrame extends JFrame {
     }
 
     public void setActivity(String nextActivity) {
-        output.setText(nextActivity);
+        if (nextActivity == null)
+        {
+            nextActivity = "Seems there are no activities with that combination. "
+                    + "Try changing your filters";
+        } else
+        {
+            output.setText(nextActivity);
+        }
     }
 
     public void showError() {

@@ -30,11 +30,6 @@ public class ActivityPresenter {
         String nextActivity = activity.getNextActivity() + " can be done with "
                 + activity.getParticipants() + people;
         System.out.println(nextActivity);
-        if (activity.getNextActivity() == null)
-        {
-            nextActivity = "Seems there are no activities with that combination. "
-                    + "Try changing your filters";
-        }
         view.setActivity(nextActivity);
         view.setLink(activity.getLink());
 
