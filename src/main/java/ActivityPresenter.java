@@ -1,6 +1,8 @@
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
+import javax.swing.*;
+
 public class ActivityPresenter {
     private ActivityFrame view;
     private ActivityService model;
@@ -32,7 +34,6 @@ public class ActivityPresenter {
         System.out.println(nextActivity);
         view.setActivity(nextActivity);
         view.setLink(activity.getLink());
-
     }
 
     public void onError(Throwable throwable) {

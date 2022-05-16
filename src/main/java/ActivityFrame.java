@@ -6,7 +6,6 @@ import java.util.Objects;
 import java.util.Random;
 
 public class ActivityFrame extends JFrame {
-    private static JFrame frame;
     private JComboBox<String> comboMenu;
     private JButton submitButton;
     private JLabel output;
@@ -15,8 +14,6 @@ public class ActivityFrame extends JFrame {
     private final String[] categories = {"education", "recreational", "social",
             "diy", "charity", "cooking", "relaxation", "music", "busywork"};
     private String url;
-    private Random gen;
-
     ActivityPresenter presenter;
 
 
@@ -27,25 +24,33 @@ public class ActivityFrame extends JFrame {
 
         setLayout(new FlowLayout());
 
+        JPanel horizontalPanel = new JPanel();
+        horizontalPanel.setLayout(new BoxLayout(horizontalPanel, BoxLayout.X_AXIS));
+        add(horizontalPanel);
+
         comboMenu = new JComboBox<>(categories);
-        add(comboMenu);
+        horizontalPanel.add(comboMenu);
 
         SpinnerModel spinnerModel = new SpinnerNumberModel(1, 1, 5, 1);
         numPeople = new JSpinner(spinnerModel);
-        add(numPeople);
+        horizontalPanel.add(numPeople);
+
+        JPanel grid = new JPanel();
+        grid.setLayout(new GridLayout(4, 1));
+        add(grid);
 
         submitButton = new JButton();
         submitButton.setText("Click for an activity");
         submitButton.addActionListener(this::onSubmitClicked);
-        add(submitButton);
+        grid.add(submitButton);
 
 
         output = new JLabel();
         output.setText("Let's get started!");
-        add(output);
+        grid.add(output);
 
         btnLink = new JButton();
-        add(btnLink);
+        grid.add(btnLink);
         btnLink.addActionListener(this::onClickLink);
 
 
@@ -68,32 +73,11 @@ public class ActivityFrame extends JFrame {
         }
     }
 
-
     public void onSubmitClicked(ActionEvent event) {
         String category = categories[comboMenu.getSelectedIndex()];
         presenter.loadActivityFromInput(
                 category, Integer.parseInt(numPeople.getValue().toString()));
-        changeColor();
     }
-
-
-    public void changeColor() {
-        gen = new Random();
-        Color color = new Color(gen.nextInt(256), gen.nextInt(256), gen.nextInt(256), 50);
-        frame.getContentPane().setBackground(color);
-        frame.repaint();
-    }
-
-
-    public static void main(String[] args) {
-        //JFrame frame = new ActivityFrame();
-        frame = new ActivityFrame();
-        frame.setVisible(true);
-        Image icon = Toolkit.getDefaultToolkit().getImage("icon.png");
-        frame.setIconImage(icon);
-
-    }
-
 
     public void setLink(String link) {
         url = link;
@@ -119,5 +103,12 @@ public class ActivityFrame extends JFrame {
 
     public void showError() {
         output.setText("Something went wrong somewhere... Please try again");
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new ActivityFrame();
+        frame.setVisible(true);
+        Image icon = Toolkit.getDefaultToolkit().getImage("icon.png");
+        frame.setIconImage(icon);
     }
 }
