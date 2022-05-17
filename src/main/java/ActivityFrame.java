@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.net.URI;
 import java.util.Objects;
-import java.util.Random;
 
 public class ActivityFrame extends JFrame {
     private JComboBox<String> comboMenu;
@@ -24,34 +23,39 @@ public class ActivityFrame extends JFrame {
 
         setLayout(new FlowLayout());
 
-        JPanel horizontalPanel = new JPanel();
-        horizontalPanel.setLayout(new BoxLayout(horizontalPanel, BoxLayout.X_AXIS));
-        add(horizontalPanel);
+        JPanel horizontalLayout = new JPanel();
+        horizontalLayout.setLayout(new BoxLayout(horizontalLayout, BoxLayout.X_AXIS));
+        add(horizontalLayout);
+
+        JPanel borderLayout = new JPanel();
+        borderLayout.setLayout(new BorderLayout());
+        add(borderLayout);
 
         comboMenu = new JComboBox<>(categories);
-        horizontalPanel.add(comboMenu);
+        horizontalLayout.add(comboMenu);
 
         SpinnerModel spinnerModel = new SpinnerNumberModel(1, 1, 5, 1);
-        numPeople = new JSpinner(spinnerModel);
-        horizontalPanel.add(numPeople);
 
-        JPanel grid = new JPanel();
-        grid.setLayout(new GridLayout(4, 1));
-        add(grid);
+        numPeople = new JSpinner(spinnerModel);
+        horizontalLayout.add(numPeople);
+
+        borderLayout.add(horizontalLayout, BorderLayout.PAGE_START);
 
         submitButton = new JButton();
         submitButton.setText("Click for an activity");
         submitButton.addActionListener(this::onSubmitClicked);
-        grid.add(submitButton);
+        borderLayout.add(submitButton, BorderLayout.BEFORE_LINE_BEGINS);
 
+
+        btnLink = new JButton();
+        btnLink.addActionListener(this::onClickLink);
+        btnLink.setText("Get started to see links here");
+        borderLayout.add(btnLink, BorderLayout.AFTER_LINE_ENDS);
 
         output = new JLabel();
         output.setText("Let's get started!");
-        grid.add(output);
+        borderLayout.add(output, BorderLayout.AFTER_LAST_LINE);
 
-        btnLink = new JButton();
-        grid.add(btnLink);
-        btnLink.addActionListener(this::onClickLink);
 
 
         GetActivityServiceFactory factory = new GetActivityServiceFactory();
@@ -95,10 +99,9 @@ public class ActivityFrame extends JFrame {
         {
             nextActivity = "Seems there are no activities with that combination. "
                     + "Try changing your filters";
-        } else
-        {
-            output.setText(nextActivity);
         }
+        output.setText(nextActivity);
+
     }
 
     public void showError() {

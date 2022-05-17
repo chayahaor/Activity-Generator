@@ -1,8 +1,6 @@
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-import javax.swing.*;
-
 public class ActivityPresenter {
     private ActivityFrame view;
     private ActivityService model;
