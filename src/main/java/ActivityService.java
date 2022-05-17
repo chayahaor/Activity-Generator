@@ -1,11 +1,13 @@
-
-import io.reactivex.Observable;
+import io.reactivex.Single;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 
 public interface ActivityService {
-    @GET("api/activity/")
-    Observable<Activity> getNewActivity(@Query("type") String type, @Query("participants") int participants);
 
+    @GET("activity/")
+
+    Single<Activity> getActivity(
+            @Query("type") String type,
+            @Query("participants") int participants);
 }

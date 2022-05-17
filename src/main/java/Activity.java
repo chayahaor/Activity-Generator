@@ -1,5 +1,4 @@
 public class Activity {
-
     String activity;
     String type;
     int participants;
@@ -8,7 +7,7 @@ public class Activity {
     String key;
     Double accessibility;
 
-    public String getActivity() {
+    public String getNextActivity() {
         return activity;
     }
 
@@ -16,23 +15,23 @@ public class Activity {
         return type;
     }
 
-    public int getParticipants(){
+    public int getParticipants() {
         return participants;
     }
 
-    public double getPrice(){
+    public double getPrice() {
         return price;
     }
 
-    public String getLink(){
+    public String getLink() {
         return link;
     }
 
-    public String getKey(){
+    public String getKey() {
         return key;
     }
 
-    public double getAccessibility(){
+    public double getAccessibility() {
         return accessibility;
     }
 
