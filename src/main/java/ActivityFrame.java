@@ -18,7 +18,7 @@ public class ActivityFrame extends JFrame {
 
     public ActivityFrame() {
         setTitle("Activity Generator");
-        setSize(800, 600);
+        setSize(800, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         setLayout(new FlowLayout());
