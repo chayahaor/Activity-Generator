@@ -31,4 +31,20 @@ class ActivityPresenterTest {
         //then
         verify(view).setActivity("Compliment someone can be done with 2 people");
     }
+
+    @Test
+    void testNoActivity() {
+        //given
+        ActivityFrame view = mock(ActivityFrame.class);
+        ActivityService model = mock(ActivityService.class);
+        ActivityPresenter presenter = new ActivityPresenter(view, model);
+        Activity activity = mock(Activity.class);
+        doReturn(Single.just(activity)).when(model).getActivity("diy",5);
+        //when
+        presenter.loadActivityFromInput("diy", 5);
+
+        //then
+
+        verify(view).setLink(null);
+    }
 }

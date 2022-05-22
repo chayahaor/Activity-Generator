@@ -57,7 +57,6 @@ public class ActivityFrame extends JFrame {
         borderLayout.add(output, BorderLayout.AFTER_LAST_LINE);
 
 
-
         GetActivityServiceFactory factory = new GetActivityServiceFactory();
         presenter = new ActivityPresenter(this, factory.getInstance());
 
@@ -85,7 +84,7 @@ public class ActivityFrame extends JFrame {
 
     public void setLink(String link) {
         url = link;
-        if (!Objects.equals(link, ""))
+        if (!"".equals(link) && link != null)
         {
             btnLink.setText("Click for the link!");
         } else
