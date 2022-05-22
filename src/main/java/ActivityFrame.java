@@ -67,7 +67,7 @@ public class ActivityFrame extends JFrame {
     private void onClickLink(ActionEvent event) {
         try
         {
-            if (!Objects.equals(url, ""))
+            if (!"".equals(url))
             {
                 Desktop.getDesktop().browse(new URI(url));
             }
@@ -95,7 +95,7 @@ public class ActivityFrame extends JFrame {
     }
 
     public void setActivity(String nextActivity) {
-        if (nextActivity == null)
+        if (nextActivity.contains("null"))
         {
             nextActivity = "Seems there are no activities with that combination. "
                     + "Try changing your filters";
