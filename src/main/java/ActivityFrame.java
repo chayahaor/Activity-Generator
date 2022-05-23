@@ -94,11 +94,15 @@ public class ActivityFrame extends JFrame {
     }
 
     public void setActivity(String nextActivity) {
+
+        //if there are no activities with that filter,
+        // instead of outputting "null can be done with 0 people" present a clearer message
         if (nextActivity.contains("null"))
         {
             nextActivity = "Seems there are no activities with that combination. "
                     + "Try changing your filters";
         }
+
         output.setText(nextActivity);
 
     }

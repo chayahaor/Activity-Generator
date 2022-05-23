@@ -33,18 +33,18 @@ class ActivityPresenterTest {
     }
 
     @Test
-    void testNoActivity() {
+    void noActivity() {
         //given
         ActivityFrame view = mock(ActivityFrame.class);
         ActivityService model = mock(ActivityService.class);
         ActivityPresenter presenter = new ActivityPresenter(view, model);
         Activity activity = mock(Activity.class);
         doReturn(Single.just(activity)).when(model).getActivity("diy",5);
+
         //when
         presenter.loadActivityFromInput("diy", 5);
 
         //then
-
         verify(view).setLink(null);
     }
 }
