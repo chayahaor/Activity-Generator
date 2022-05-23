@@ -18,7 +18,7 @@ public class ActivityFrame extends JFrame {
 
     public ActivityFrame() {
         setTitle("Activity Generator");
-        setSize(800, 600);
+        setSize(800, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         setLayout(new FlowLayout());
@@ -57,7 +57,6 @@ public class ActivityFrame extends JFrame {
         borderLayout.add(output, BorderLayout.AFTER_LAST_LINE);
 
 
-
         GetActivityServiceFactory factory = new GetActivityServiceFactory();
         presenter = new ActivityPresenter(this, factory.getInstance());
 
@@ -67,7 +66,7 @@ public class ActivityFrame extends JFrame {
     private void onClickLink(ActionEvent event) {
         try
         {
-            if (!Objects.equals(url, ""))
+            if (!"".equals(url))
             {
                 Desktop.getDesktop().browse(new URI(url));
             }
@@ -85,7 +84,7 @@ public class ActivityFrame extends JFrame {
 
     public void setLink(String link) {
         url = link;
-        if (!Objects.equals(link, ""))
+        if (!"".equals(link) && link != null)
         {
             btnLink.setText("Click for the link!");
         } else
@@ -95,11 +94,15 @@ public class ActivityFrame extends JFrame {
     }
 
     public void setActivity(String nextActivity) {
-        if (nextActivity == null)
+
+        //if there are no activities with that filter,
+        // instead of outputting "null can be done with 0 people" present a clearer message
+        if (nextActivity.contains("null"))
         {
             nextActivity = "Seems there are no activities with that combination. "
                     + "Try changing your filters";
         }
+
         output.setText(nextActivity);
 
     }
