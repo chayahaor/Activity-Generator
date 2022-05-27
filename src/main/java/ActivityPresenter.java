@@ -1,13 +1,14 @@
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
+import javax.inject.Inject;
 import javax.inject.Provider;
 
 public class ActivityPresenter {
     private Provider<ActivityFrame> viewProvider;
     private ActivityService model;
-    private ActivityFrame view;
 
+    @Inject
     public ActivityPresenter(Provider<ActivityFrame> viewProvider, ActivityService model) {
         this.viewProvider = viewProvider;
         this.model = model;
@@ -32,7 +33,7 @@ public class ActivityPresenter {
         String nextActivity = activity.getNextActivity() + " can be done with "
                 + activity.getParticipants() + people;
         System.out.println(nextActivity);
-        view = viewProvider.get();
+        ActivityFrame view = viewProvider.get();
         view.setActivity(nextActivity);
         view.setLink(activity.getLink());
     }
