@@ -8,7 +8,7 @@ public class ActivityModule {
 
     @Singleton
     @Provides
-    public ActivityService openWeatherMapService(GetActivityServiceFactory factory) {
+    public ActivityService activityService(GetActivityServiceFactory factory) {
         return factory.getInstance();
     }
 }
