@@ -1,9 +1,11 @@
+import javax.inject.Inject;
+import javax.inject.Singleton;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.net.URI;
-import java.util.Objects;
 
+@Singleton
 public class ActivityFrame extends JFrame {
     private JComboBox<String> comboMenu;
     private JButton submitButton;
@@ -15,8 +17,10 @@ public class ActivityFrame extends JFrame {
     private String url;
     ActivityPresenter presenter;
 
+    @Inject
+    public ActivityFrame(ActivityPresenter presenter) {
+        this.presenter = presenter;
 
-    public ActivityFrame() {
         setTitle("Activity Generator");
         setSize(800, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -57,8 +61,6 @@ public class ActivityFrame extends JFrame {
         borderLayout.add(output, BorderLayout.AFTER_LAST_LINE);
 
 
-        GetActivityServiceFactory factory = new GetActivityServiceFactory();
-        presenter = new ActivityPresenter(this, factory.getInstance());
 
     }
 
@@ -112,7 +114,7 @@ public class ActivityFrame extends JFrame {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new ActivityFrame();
+        ActivityFrame frame = DaggerActivityComponent.create().getActivityFrame();
         frame.setVisible(true);
         Image icon = Toolkit.getDefaultToolkit().getImage("icon.png");
         frame.setIconImage(icon);

@@ -4,7 +4,15 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import javax.inject.Inject;
+
 public class GetActivityServiceFactory {
+
+    @Inject
+    public GetActivityServiceFactory() {
+        //Dagger needs a blank constructor with @Inject in order to function
+    }
+
     public ActivityService getInstance() {
 
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
