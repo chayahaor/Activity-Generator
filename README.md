@@ -9,12 +9,12 @@ on a given category and number of people. The activity is
 generated from a [Bored API](https://www.boredapi.com/documentation). 
 
 This project uses:
-- Retrofit
-- Gson
-- JUnit
-- Mockito
-- Rx
-- Gradle
+- [Retrofit](https://square.github.io/retrofit/)
+- [JUnit](https://junit.org/junit5/)
+- [Mockito](https://site.mockito.org/)
+- [Rx](https://reactivex.io/)
+- [Gradle](https://gradle.org/)
+- [Dagger](https://www.baeldung.com/dagger-2)
 
 
 ![img.png](StartImage.png)

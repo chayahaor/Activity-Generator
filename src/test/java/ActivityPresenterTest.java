@@ -4,6 +4,8 @@ import io.reactivex.schedulers.Schedulers;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import javax.inject.Provider;
+
 import static org.mockito.Mockito.*;
 
 class ActivityPresenterTest {
@@ -18,7 +20,8 @@ class ActivityPresenterTest {
         //given
         ActivityFrame view = mock(ActivityFrame.class);
         ActivityService model = mock(ActivityService.class);
-        ActivityPresenter presenter = new ActivityPresenter(view, model);
+        Provider<ActivityFrame> viewProvider = () -> view;
+        ActivityPresenter presenter = new ActivityPresenter(viewProvider, model);
         Activity activity = mock(Activity.class);
         doReturn(2).when(activity).getParticipants();
         doReturn("Compliment someone").when(activity).getNextActivity();
@@ -36,8 +39,9 @@ class ActivityPresenterTest {
     void noActivity() {
         //given
         ActivityFrame view = mock(ActivityFrame.class);
+        Provider<ActivityFrame> viewProvider = () -> view;
         ActivityService model = mock(ActivityService.class);
-        ActivityPresenter presenter = new ActivityPresenter(view, model);
+        ActivityPresenter presenter = new ActivityPresenter(viewProvider, model);
         Activity activity = mock(Activity.class);
         doReturn(Single.just(activity)).when(model).getActivity("diy",5);
 
