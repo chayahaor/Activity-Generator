@@ -8,7 +8,7 @@ public class ActivityModule {
 
     @Singleton
     @Provides
-    public ActivityService activityService(GetActivityServiceFactory factory) {
+    public ActivityService activityService(ActivityServiceFactory factory) {
         return factory.getInstance();
     }
 }

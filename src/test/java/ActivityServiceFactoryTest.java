@@ -3,12 +3,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class GetActivityServiceFactoryTest {
+class ActivityServiceFactoryTest {
 
     @Test
     void getActivity() {
         //given
-        GetActivityServiceFactory factory = new GetActivityServiceFactory();
+        ActivityServiceFactory factory = new ActivityServiceFactory();
         ActivityService service = factory.getInstance();
         //when
         Activity activity = service.getActivity("social", 2).blockingGet();

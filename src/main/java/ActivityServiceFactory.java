@@ -6,10 +6,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import javax.inject.Inject;
 
-public class GetActivityServiceFactory {
+public class ActivityServiceFactory {
 
     @Inject
-    public GetActivityServiceFactory() {
+    public ActivityServiceFactory() {
         //Dagger needs a blank constructor with @Inject in order to function
     }
 

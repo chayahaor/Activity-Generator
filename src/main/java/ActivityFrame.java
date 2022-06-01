@@ -25,6 +25,9 @@ public class ActivityFrame extends JFrame {
         setSize(800, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        Image icon = Toolkit.getDefaultToolkit().getImage("icon.png");
+        setIconImage(icon);
+
         setLayout(new FlowLayout());
 
         JPanel horizontalLayout = new JPanel();
@@ -116,7 +119,5 @@ public class ActivityFrame extends JFrame {
     public static void main(String[] args) {
         ActivityFrame frame = DaggerActivityComponent.create().getActivityFrame();
         frame.setVisible(true);
-        Image icon = Toolkit.getDefaultToolkit().getImage("icon.png");
-        frame.setIconImage(icon);
     }
 }
